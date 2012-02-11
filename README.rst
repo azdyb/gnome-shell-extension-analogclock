@@ -5,7 +5,7 @@ AnalogClock is a gnome-shell extension, which shows an analog clock on panel
 instead of the default one. It also adds time to calendar menu.
 
 
-What it looks like?
+What does it look like?
 ===================
 
 Everybody loves screenshots, right?
