@@ -1,0 +1,8 @@
+{
+  "shell-version": ["3.2"],
+  "uuid": "AnalogClock@zdyb.tk",
+  "name": "Analog Clock",
+  "description": "Shows an analog clock on panel instead of the default one",
+  "url": "http://github.com/ojo/gnome-shell-extension-analogclock",
+  "author": "Aleksander Zdyb"
+}
