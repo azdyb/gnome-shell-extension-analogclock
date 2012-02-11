@@ -34,7 +34,7 @@ Please do not forget to enable the newly installed extension using for example g
 .. _gnome-tweak-tool: http://live.gnome.org/GnomeTweakTool
 
 If you want the clock to be moved to the right of the panel (as shown on
-the screenshots aboce), use one of many availabe extensions. You can find
+the screenshots above), use one of many availabe extensions. You can find
 them on `Shell Extensions`_ or using your favorite search engine.
 
 .. _Shell Extensions: https://extensions.gnome.org/
