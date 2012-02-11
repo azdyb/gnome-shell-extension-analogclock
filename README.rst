@@ -18,7 +18,7 @@ Everybody loves screenshots, right?
 
 
 Installation
-===========
+============
   
 The AnalogClock@zdyb.tk directory should be copied to
 /usr/share/gnome-shell/extensions or ~/.local/share/gnome-shell/extensions/::
@@ -33,11 +33,10 @@ Please do not forget to enable the newly installed extension using for example g
 
 .. _gnome-tweak-tool: http://live.gnome.org/GnomeTweakTool
 
-If you want the clock to be moved to the right of the panel (as shown on
-the screenshots above), use one of many available extensions. You can find
-them on `Shell Extensions`_ or using your favorite search engine.
+If you do not want the clock to be moved to the right of the panel, just edit
+AnalogClock\@zdyb.tk/extension.js::
 
-.. _Shell Extensions: https://extensions.gnome.org/
+    const MOVE_RIGHT = false;
 
 License
 =======

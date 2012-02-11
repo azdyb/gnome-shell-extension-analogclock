@@ -30,6 +30,7 @@ const UPDATE_INTERVAL = 500;
 const FACE_WIDTH = 2;
 const ARM_WIDTH = 1.75;
 const MARGIN = 1;
+const MOVE_RIGHT = true;
 
 
 // in org.gnome.desktop.interface
@@ -137,6 +138,11 @@ AnalogClock.prototype = {
     },
     
     enable: function() {
+        if (MOVE_RIGHT) {
+            Main.panel._centerBox.remove_actor(this.date_menu.actor);
+            Main.panel._rightBox.insert_actor(this.date_menu.actor, Main.panel._rightBox.get_children().length - 1);
+        }
+        
         this.date_menu.actor.remove_actor(this.orig_clock);
         this.date_menu.actor.add_actor(this.analog_clock);
         this.date_menu.actor.add_style_class_name("analog-clock");
@@ -165,6 +171,11 @@ AnalogClock.prototype = {
                 c.get_children()[0].remove_actor(this.time_label);
                 break;
             }
+        }
+        
+        if (MOVE_RIGHT) {
+            Main.panel._rightBox.remove_actor(this.date_menu.actor);
+            Main.panel._centerBox.insert_actor(this.date_menu.actor, 0);
         }
     }
 }
