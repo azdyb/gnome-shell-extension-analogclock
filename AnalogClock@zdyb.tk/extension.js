@@ -27,8 +27,8 @@ const Gio = imports.gi.Gio;
 
 const ERROR_LABEL = "---";
 const UPDATE_INTERVAL = 500;
-const FACE_WIDTH = 2.5;
-const ARM_WIDTH = 1.5;
+const FACE_WIDTH = 2;
+const ARM_WIDTH = 1.75;
 const MARGIN = 1;
 
 
