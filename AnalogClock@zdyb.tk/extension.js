@@ -113,12 +113,12 @@ AnalogClock.prototype = {
         // Draw face
         cr.setLineWidth(FACE_WIDTH);
         cr.arc(0, 0, area_height / 2.0 - FACE_WIDTH, 0, 2 * Math.PI);
-        cr.stroke()
+        cr.stroke();
 
-        cr.save()
-        cr.setLineWidth(ARM_WIDTH);        
-        
-        // Draw hours arm        
+        cr.save();
+        cr.setLineWidth(ARM_WIDTH);
+
+        // Draw hours arm
         cr.save();
         cr.rotate((( h + (m / 60.0)) / 12.0) * 2 * Math.PI);
         cr.moveTo(0, 0);
@@ -134,7 +134,7 @@ AnalogClock.prototype = {
         cr.stroke();
         cr.restore();
         
-        cr.restore()
+        cr.restore();
     },
     
     enable: function() {
