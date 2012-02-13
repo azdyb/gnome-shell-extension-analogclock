@@ -112,7 +112,7 @@ AnalogClock.prototype = {
 
         // Draw face
         cr.setLineWidth(FACE_WIDTH);
-        cr.arc(0, 0, area_height / 2.0 - FACE_WIDTH, 0, 2 * Math.PI);
+        cr.arc(0, 0, area_height / 2.25 - FACE_WIDTH, 0, 2 * Math.PI);
         cr.stroke();
 
         cr.save();
@@ -122,7 +122,7 @@ AnalogClock.prototype = {
         cr.save();
         cr.rotate((( h + (m / 60.0)) / 12.0) * 2 * Math.PI);
         cr.moveTo(0, 0);
-        cr.lineTo(0, -0.23 * area_height);
+        cr.lineTo(0, -0.195 * area_height);
         cr.stroke();
         cr.restore();
         
@@ -130,7 +130,7 @@ AnalogClock.prototype = {
         cr.save();
         cr.rotate((m / 60.0) * 2 * Math.PI);
         cr.moveTo(0, 0);
-        cr.lineTo(0, -0.28 * area_height);
+        cr.lineTo(0, -0.25 * area_height);
         cr.stroke();
         cr.restore();
         
