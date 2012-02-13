@@ -44,6 +44,12 @@ function AnalogClock() {
 }
 
 AnalogClock.prototype = {
+
+    _update_handler: null,
+    _repaint_handler: null,
+    _desktop_settings_handler: null,
+    _clock_settings_handler: null,
+    
     _init: function() {
         this.display_time = [-1, -1];
         this.time_format = "%R:%S"; // Safe fallback
@@ -59,17 +65,19 @@ AnalogClock.prototype = {
         
         this.desktop_settings = new Gio.Settings({ schema: "org.gnome.desktop.interface" });
         this.clock_settings = new Gio.Settings({ schema: "org.gnome.shell.clock" });
-        this.desktop_settings.connect("changed", Lang.bind(this, this.update_format));
-        this.clock_settings.connect("changed", Lang.bind(this, this.update_format));
         this.update_format();
-        
-        this.repaint = this.analog_clock.connect("repaint", Lang.bind(this, this.paint_clock));
     },
     
-    Run: function() {
-        this.run = true;
-        this.on_timeout();
-        Mainloop.timeout_add(UPDATE_INTERVAL, Lang.bind(this, this.on_timeout));  
+    _connect_settings: function() {
+        this._desktop_settings_handler = this.desktop_settings.connect("changed", Lang.bind(this, this.update_format));
+        this._clock_settings_handler = this.clock_settings.connect("changed", Lang.bind(this, this.update_format));
+    },
+
+    _disconnect_settings: function() {
+        if (this._desktop_settings_handler) this.desktop_settings.disconnect(this._desktop_settings_handler);
+        this._desktop_settings_handler = null;
+        if (this._clock_settings_handler) this.clock_settings.disconnect(this._clock_settings_handler);
+        this._clock_settings_handler = null;
     },
     
     update_format: function() {
@@ -156,11 +164,20 @@ AnalogClock.prototype = {
                 break;
             }
         }
-        this.Run();
+        
+        this.run = true;
+        this._connect_settings();
+        this._repaint_handler = this.analog_clock.connect("repaint", Lang.bind(this, this.paint_clock));
+        this.on_timeout();
+        this._update_handler = Mainloop.timeout_add(UPDATE_INTERVAL, Lang.bind(this, this.on_timeout));
     },
     
     disable: function() {
         this.run = false;
+        this._disconnect_settings();
+        if (this._repaint_handler) this.analog_clock.disconnect(this._repaint_handler);
+        if (this._update_handler) Mainloop.source_remove(this._update_handler);
+        
         this.date_menu.actor.remove_style_class_name("analog-clock");
         this.date_menu.actor.remove_actor(this.analog_clock);
         this.date_menu.actor.add_actor(this.orig_clock);
