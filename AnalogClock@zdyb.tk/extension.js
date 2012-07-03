@@ -148,7 +148,7 @@ AnalogClock.prototype = {
     enable: function() {
         if (MOVE_RIGHT) {
             Main.panel._centerBox.remove_actor(this.date_menu.actor);
-            Main.panel._rightBox.insert_actor(this.date_menu.actor, Main.panel._rightBox.get_children().length - 1);
+            Main.panel._rightBox.insert_child_at_index(this.date_menu.actor, Main.panel._rightBox.get_children().length - 1);
         }
         
         this.date_menu.actor.remove_actor(this.orig_clock);
@@ -160,7 +160,7 @@ AnalogClock.prototype = {
         let children = this.date_menu.menu.box.get_children();
         for each(let c in children) {
             if(c.name == "calendarArea") {
-                c.get_children()[0].insert_actor(this.time_label, 0);
+                c.get_children()[0].insert_child_at_index(this.time_label, 0);
                 break;
             }
         }
@@ -192,7 +192,7 @@ AnalogClock.prototype = {
         
         if (MOVE_RIGHT) {
             Main.panel._rightBox.remove_actor(this.date_menu.actor);
-            Main.panel._centerBox.insert_actor(this.date_menu.actor, 0);
+            Main.panel._centerBox.add(this.date_menu.actor, 0);
         }
     }
 }
