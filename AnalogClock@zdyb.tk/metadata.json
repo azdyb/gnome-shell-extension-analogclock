@@ -1,5 +1,5 @@
 {
-  "shell-version": ["3.2"],
+  "shell-version": ["3.4"],
   "uuid": "AnalogClock@zdyb.tk",
   "name": "Analog Clock",
   "description": "Shows an analog clock on panel instead of the default one",
