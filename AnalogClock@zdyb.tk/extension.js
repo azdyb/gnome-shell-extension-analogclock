@@ -160,7 +160,7 @@ AnalogClock.prototype = {
         let children = this.date_menu.menu.box.get_children();
         for each(let c in children) {
             if(c.name == "calendarArea") {
-                c.get_children()[0].add(this.time_label, 0);
+                c.get_children()[0].insert_child_at_index(this.time_label, 0);
                 break;
             }
         }
