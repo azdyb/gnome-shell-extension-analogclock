@@ -148,7 +148,7 @@ AnalogClock.prototype = {
     enable: function() {
         if (MOVE_RIGHT) {
             Main.panel._centerBox.remove_actor(this.date_menu.actor);
-            Main.panel._rightBox.add(this.date_menu.actor, Main.panel._rightBox.get_children().length - 1);
+            Main.panel._rightBox.insert_child_at_index(this.date_menu.actor, Main.panel._rightBox.get_children().length - 1);
         }
         
         this.date_menu.actor.remove_actor(this.orig_clock);
